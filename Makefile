@@ -5,14 +5,14 @@ SERVER=server
 LISTS=lists
 HASHT=hashtable
 
+ZIPNAME := load_balancer.zip
+
 SOURCES=main.c $(LOAD).c $(SERVER).c $(LISTS).c $(HASHT).c
 HEADERS=$(LOAD).h $(SERVER).h $(LISTS).h $(HASHT).h utils.h
 
 .PHONY: build clean pack
 
-build: tema2
-
-tema2: main.o $(LOAD).o $(SERVER).o $(LISTS).o $(HASHT).o
+build: main.o $(LOAD).o $(SERVER).o $(LISTS).o $(HASHT).o
 	$(CC) $^ -o $@
 
 main.o: main.c
@@ -34,4 +34,4 @@ clean:
 	rm -f *.o tema2 *.h.gch
 
 pack:
-	zip -FSr 313CA_MarinRadu_Tema2.zip $(SOURCES) $(HEADERS) Makefile README README.md
+	zip -FSr $(ZIPNAME) $(SOURCES) $(HEADERS) Makefile README README.md
